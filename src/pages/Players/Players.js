@@ -16,7 +16,7 @@ const Players = () => {
   }
 
 
-  return (
+  return ( 
     <div className="players">
       <div className ="titles">
       <h2>Players with team</h2>
