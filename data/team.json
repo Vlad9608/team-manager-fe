@@ -1,0 +1,24 @@
+{
+  "teams": [
+    {
+      "id": 1,
+      "name": "Team 1",
+      "country": "America",
+      "noOfPlayers": 0,
+      "noOfGames": "232",
+      "noOfWins": "3232",
+      "noOfLoses": "22",
+      "imageUrl": "https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTAxZGlnaXMucmNzLXJkcy5y/byUyRnN0b3JhZ2UlMkYyMDIyJTJGMDUl/MkYwMyUyRjE1MDE0NzlfMTUwMTQ3OV9H/ZXR0eUltYWdlcy0xMzk1MDIzNzU4Lmpw/ZyZ3PTcwMCZoPTQyMCZoYXNoPTdlNDll/ODUzMjc2ZDY0NTAwNTAyMTRhMjQ5ZDk3ZGM3.thumb.jpg",
+      "players": [
+        {
+          "id": 1,
+          "teamId": 1,
+          "firstName": "Cristiano",
+          "lastName": "Ronaldo",
+          "imageUrl": "https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTAxZGlnaXMucmNzLXJkcy5y/byUyRnN0b3JhZ2UlMkYyMDIyJTJGMDUl/MkYwMyUyRjE1MDE0NzlfMTUwMTQ3OV9H/ZXR0eUltYWdlcy0xMzk1MDIzNzU4Lmpw/ZyZ3PTcwMCZoPTQyMCZoYXNoPTdlNDll/ODUzMjc2ZDY0NTAwNTAyMTRhMjQ5ZDk3ZGM3.thumb.jpg",
+          "noOfGames": "23"
+        }
+      ]
+    }
+  ]
+}

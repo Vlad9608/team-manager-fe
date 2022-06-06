@@ -1,0 +1,26 @@
+.Home {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.Home .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+}
+.description .title {
+    font-size: 60px;
+    margin-bottom: 50px;
+}
+.description button {
+    background-color: green;
+    padding:10px 80px;
+    text-align: center;
+    color:white;
+}
+.Home img {
+    height: 900px;
+}
