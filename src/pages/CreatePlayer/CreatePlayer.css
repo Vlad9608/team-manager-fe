@@ -32,9 +32,9 @@
     font-weight: 700;
     margin-bottom: 100px;
 }
-.content img {
+.image-container {
     height:400px;
-    margin: auto 0;
+    width:400px;
 }
 .content button {
     padding:10px 40px;

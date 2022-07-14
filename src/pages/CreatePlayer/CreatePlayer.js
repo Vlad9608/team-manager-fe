@@ -1,56 +1,55 @@
-import { useState, useContext} from 'react'
-import './CreatePlayer.css'
-import {PlayerContext} from '../../context/PlayerContext';
+import { useState, useContext } from "react";
+import "./CreatePlayer.css";
+import { PlayerContext } from "../../context/PlayerContext";
+import { TeamContext } from "../../context/TeamContext";
 
 const CreatePlayer = () => {
-  const {createPlayer} = useContext(PlayerContext)
+  const { createPlayer } = useContext(PlayerContext);
+  const { teams } = useContext(TeamContext);
 
-  const [teamId, setTeamId] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [noOfGames, setNoOfGames] = useState('');
-  
+  const [teamId, setTeamId] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [noOfGames, setNoOfGames] = useState("");
+
+  const handleChangeFunction = (e) => {
+    setTeamId(e.target.value);
+  };
+
+  // get all teams from context
+
+  // create handleChangeFunction and set setTeamId with selectedId
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const player = { teamId, firstName, lastName, imageUrl, noOfGames }; 
+    const player = { teamId, firstName, lastName, imageUrl, noOfGames };
     createPlayer(player);
-    // TODO: change this fetch to createPlayer method from PlayerContext
-    // createPlayer(player)
-    // fetch('http://localhost:8000/players/', {
-    //   method: 'POST',
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(player)
-    // }).then(() => {
-    //   console.log('new player added');
-    // })
-  }
+  };
+
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertImageToBase64(file);
-    setImageUrl(base64)
-  }
+    setImageUrl(base64);
+  };
+
   const convertImageToBase64 = (file) => {
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
 
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
 
-        fileReader.onload = () => {
-          resolve(fileReader.result);
-        };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
 
-        fileReader.onerror = (error) => {
-          reject(error);
-        }
-    }) 
-
-    
     // find image on event.target.files[0]
     // TODO: find on internet method to convert image from input to base64, and save it using setImageUrl(convertedBase64String)
-
-  }
+  };
 
   return (
     <div className="create">
@@ -80,12 +79,17 @@ const CreatePlayer = () => {
             onChange={(e) => setLastName(e.target.value)}
           />
           <label>Team</label>
-          <input
-            type="text"
-            required
-            value={teamId}
-            onChange={(e) => setTeamId(e.target.value)}
-          />
+          {console.log("TEAMS:", teams)}
+          <form onChange={(event) => handleChangeFunction(event)} action="#">
+            <label for="team">Team</label>
+            <select name="teams" id="team">
+              {teams?.map((team) => (
+                <option value={team.id}>
+                  <div>{team.name}</div>
+                </option>
+              ))}
+            </select>
+          </form>
           <label>Number of Games</label>
           <input
             type="text"
@@ -96,10 +100,12 @@ const CreatePlayer = () => {
           <button>Create Player</button>
         </form>
         {/* TODO: display uploaded image src={`data:image/jpeg;base64,${imageUrl}`} */}
-        <img src={imageUrl}/>
+        <div className="image-container">
+          <img src={imageUrl} />
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default CreatePlayer;
