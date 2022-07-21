@@ -7,6 +7,7 @@ const TeamContextProvider = (props) => {
   // TODO: use selectedTeam into teamDetails page
   // TODO: get teamId from useParams to use within the getTeam function
   const [selectedTeam, setSelectedTeam] = useState(null)
+
  
 
   const getAllTeams = () => {

@@ -1,11 +1,11 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "./CreatePlayer.css";
 import { PlayerContext } from "../../context/PlayerContext";
 import { TeamContext } from "../../context/TeamContext";
 
 const CreatePlayer = () => {
   const { createPlayer } = useContext(PlayerContext);
-  const { teams } = useContext(TeamContext);
+  const { teams,getAllTeams } = useContext(TeamContext);
 
   const [teamId, setTeamId] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -13,9 +13,14 @@ const CreatePlayer = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [noOfGames, setNoOfGames] = useState("");
 
+  useEffect(() =>  {
+    getAllTeams();
+  },[])
+  
   const handleChangeFunction = (e) => {
     setTeamId(e.target.value);
   };
+ 
 
   // get all teams from context
 
@@ -78,14 +83,12 @@ const CreatePlayer = () => {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
-          <label>Team</label>
-          {console.log("TEAMS:", teams)}
           <form onChange={(event) => handleChangeFunction(event)} action="#">
             <label for="team">Team</label>
-            <select name="teams" id="team">
+            <select className="selected-team"  name="teams" id="team">
               {teams?.map((team) => (
-                <option value={team.id}>
-                  <div>{team.name}</div>
+                <option className="selected-team-style" value={team.id}>
+                  <div className="text-style">{team.name}</div>
                 </option>
               ))}
             </select>

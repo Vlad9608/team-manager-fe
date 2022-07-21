@@ -23,6 +23,7 @@ const PlayerContextProvider = (props) => {
     }).then(() => {
       console.log('new player added');
     })
+    
   }
 
   const getPlayer = (playerId) => {
