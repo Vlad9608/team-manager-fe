@@ -23,14 +23,12 @@ const TeamDetails = () => {
           /* TODO: display team details from selectedTeam object */
           selectedTeam && (
             <div className="team-details">
-              <h2 className="title-team">{selectedTeam.name}</h2>
-              <div className="team-square">
-              <h2 className="team-detail">Country: {selectedTeam.country}</h2>
-              <h2 className="team-detail">Number of Players: {selectedTeam.noOfPlayers}</h2>
-              <h2 className="team-detail">Number of Games: {selectedTeam.noOfGames}</h2>
-              <h2 className="team-detail"> Number of Wins: {selectedTeam.noOfWins}</h2>
-              <h2 className="team-detail">Number of Loses: {selectedTeam.noOfLoses}</h2>
-              </div>
+              <h2 className="title">{selectedTeam.name}</h2>
+              <h2 className>{selectedTeam.country}</h2>
+              <h2>{selectedTeam.noOfPlayers}</h2>
+              <h2>{selectedTeam.noOfGames}</h2>
+              <h2>{selectedTeam.noOfWins}</h2>
+              <h2>{selectedTeam.noOfLoses}</h2>
             </div>
           )
         }

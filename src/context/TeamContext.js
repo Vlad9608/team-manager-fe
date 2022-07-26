@@ -18,22 +18,24 @@ const TeamContextProvider = (props) => {
   };
 
   const createTeam = (team) => {
-    axios.post(baseUrl, {
-      name:"",
-      country:"",
-      noOfPlayers:"",
-      noOfGames:"",
-       noOfWins:"",
-       noOfLoses:"",
-       imageUrl:"",
-      // https://www.freecodecamp.org/news/how-to-use-axios-with-react/
-      // to do handleChangeInput react
-    }).then((response) => {
-      setTeams(response.data)
-    })
+    axios
+      .post(baseUrl, {
+        name: "",
+        country: "",
+        noOfPlayers: "",
+        noOfGames: "",
+        noOfWins: "",
+        noOfLoses: "",
+        imageUrl: "",
+        // https://www.freecodecamp.org/news/how-to-use-axios-with-react/
+        // to do handleChangeInput react
+      })
+      .then((response) => {
+        setTeams(response.data);
+      });
   };
 
-  const getTeam = (teamId) => { 
+  const getTeam = (teamId) => {
     fetch(`http://localhost:8000/teams/${teamId}`)
       .then((res) => {
         return res.json();
@@ -49,9 +51,7 @@ const TeamContextProvider = (props) => {
     // }).then((data) => {
     //   getAllTeams();
     // });
-    axios
-    .delete(`${baseUrl}/${teamId}`)
-    .then(() => {
+    axios.delete(`${baseUrl}/${teamId}`).then(() => {
       getAllTeams();
     });
   };
