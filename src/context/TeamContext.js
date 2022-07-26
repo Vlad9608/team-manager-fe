@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export const TeamContext = createContext();
 
@@ -19,6 +19,13 @@ const TeamContextProvider = (props) => {
 
   const createTeam = (team) => {
     axios.post(baseUrl, {
+      name:"",
+      country:"",
+      noOfPlayers:"",
+      noOfGames:"",
+       noOfWins:"",
+       noOfLoses:"",
+       imageUrl:"",
       // https://www.freecodecamp.org/news/how-to-use-axios-with-react/
       // to do handleChangeInput react
     }).then((response) => {
@@ -37,9 +44,14 @@ const TeamContextProvider = (props) => {
   };
 
   const deleteTeam = (teamId) => {
-    fetch("http://localhost:8000/teams/" + teamId, {
-      method: "DELETE",
-    }).then((data) => {
+    // fetch("http://localhost:8000/teams/" + teamId, {
+    //   method: "DELETE",
+    // }).then((data) => {
+    //   getAllTeams();
+    // });
+    axios
+    .delete(`${baseUrl}/${teamId}`)
+    .then(() => {
       getAllTeams();
     });
   };

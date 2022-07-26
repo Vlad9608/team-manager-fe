@@ -4,7 +4,26 @@
     align-items: center;
     justify-content: center;
 }
-.title {
-    font-size:80px;
-    color:blue;
+
+.title-team {
+    font-size: 80px;
+    color: blue;
+    width: 300px;
+}
+
+.team-square {
+    border: 1px black solid;
+    padding: 30px;
+    background-color: pink;
+    -webkit-box-shadow: 14px 11px 29px 0px rgba(168, 42, 168, 0.71);
+    -moz-box-shadow: 14px 11px 29px 0px rgba(168, 42, 168, 0.71);
+    box-shadow: 14px 11px 29px 0px rgba(168, 42, 168, 0.71);
+
+}
+
+.team-detail {
+    font-size: 20px;
+    color: blueviolet;
+    width: 300px;
+    margin-bottom: 40px;
 }

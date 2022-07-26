@@ -1,27 +1,36 @@
 import React, { createContext, useState, useEffect } from 'react';
+import axios from "axios";
 
 export const PlayerContext = createContext();
 
 const PlayerContextProvider = (props) => {
+  const baseUrl = "http://localhost:9000/players/";
   const [players, setPlayers] = useState(null)
 
   const getAllPlayers = () => {
-    fetch('http://localhost:9000/players/')
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setPlayers(data);
-      })
+    axios.get(baseUrl).then((response) => {
+      setPlayers(response.data);
+    });
   }
 
   const createPlayer = (player) => {
-    fetch('http://localhost:9000/players/', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(player)
-    }).then(() => {
-      console.log('new player added');
+    // fetch('http://localhost:9000/players/', {
+    //   method: 'POST',
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(player)
+    // }).then(() => {
+    //   console.log('new player added');
+    // })
+    axios.post(baseUrl, {
+      imageUrl:"",
+      firstName:"",
+      lastName:"",
+      teamId:"",
+      noOfGames:"",
+      // https://www.freecodecamp.org/news/how-to-use-axios-with-react/
+      // to do handleChangeInput react
+    }).then((response) => {
+      setPlayers(response.data)
     })
     
   }
@@ -37,12 +46,11 @@ const PlayerContextProvider = (props) => {
   }
 
   const deletePlayer = (playersId) => {
-    fetch('http://localhost:9000/players/' + playersId, {
-      method: 'DELETE'
-    })
-    .then(data => {
+    axios
+    .delete(`${baseUrl}/${playersId}`)
+    .then(() => {
       getAllPlayers()
-    })
+    });
   }
   
 
